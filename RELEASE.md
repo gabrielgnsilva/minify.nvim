@@ -21,10 +21,6 @@
 - Bump `MINOR` for backward-compatible features or new configuration options.
 - Bump `MAJOR` for breaking command, keymap, config, or minifier behavior changes.
 
-## Suggested first stable release
-
-- If this is the first published version, tag it as `v1.0.0`.
-
 ## Release steps
 
 1. Update docs if behavior changed.
