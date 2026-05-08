@@ -1,0 +1,9 @@
+:Minify	minify.txt	/*:Minify*
+minify-commands	minify.txt	/*minify-commands*
+minify-configuration	minify.txt	/*minify-configuration*
+minify-contents	minify.txt	/*minify-contents*
+minify-installation	minify.txt	/*minify-installation*
+minify-introduction	minify.txt	/*minify-introduction*
+minify-keymaps	minify.txt	/*minify-keymaps*
+minify-testing	minify.txt	/*minify-testing*
+minify.txt	minify.txt	/*minify.txt*

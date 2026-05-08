@@ -1,0 +1,100 @@
+*minify.txt*  Simple minify helper for Neovim
+
+==============================================================================
+CONTENTS                                                      *minify-contents*
+
+1. Introduction ........................................ |minify-introduction|
+2. Installation .......................................... |minify-installation|
+3. Configuration ........................................ |minify-configuration|
+4. Commands ................................................. |minify-commands|
+5. Keymaps ................................................... |minify-keymaps|
+6. Testing ................................................... |minify-testing|
+
+==============================================================================
+1. Introduction                                          *minify-introduction*
+
+minify.nvim provides a simple `:Minify` command to minify the current buffer
+or a selected range using external CLI tools.
+
+Built-in defaults support:
+
+- `javascript`
+- `typescript`
+- `javascriptreact` → `javascript`
+- `typescriptreact` → `typescript`
+
+==============================================================================
+2. Installation                                          *minify-installation*
+
+Example with lazy.nvim: >lua
+  {
+    'gabrielgnsilva/minify.nvim',
+    cmd = 'Minify',
+    keys = '<leader>min',
+    opts = {},
+  }
+<
+
+==============================================================================
+3. Configuration                                        *minify-configuration*
+
+Default configuration: >lua
+  require('minify').setup({
+    keymap = '<leader>min',
+    notify = true,
+    minifiers = {
+      javascript = {
+        cmd = 'terser',
+        args = { '--mangle', '--compress', '--comments', 'all' },
+      },
+      typescript = {
+        cmd = 'terser',
+        args = { '--mangle', '--compress' },
+      },
+    },
+  })
+<
+
+You can replace the external executable while keeping the same workflow.
+
+Configuration is validated during setup. The keymap and minifier commands must
+be non-empty strings, `notify` must be a boolean, and minifier arguments must
+be lists of strings.
+
+Example: >lua
+  require('minify').setup({
+    minifiers = {
+      typescript = {
+        cmd = 'swc',
+        args = { '--minify' },
+      },
+    },
+  })
+<
+
+==============================================================================
+4. Commands                                                 *minify-commands*
+
+                                                          *:Minify*
+:Minify
+  Minify the current buffer.
+
+:'<,'>Minify
+  Minify the selected range.
+
+==============================================================================
+5. Keymaps                                                   *minify-keymaps*
+
+Default keymap: >
+  <leader>min
+<
+
+==============================================================================
+6. Testing                                                   *minify-testing*
+
+From the plugin directory: >
+  make test
+<
+
+==============================================================================
+vim:tw=78:ts=8:noet:ft=help:norl:
